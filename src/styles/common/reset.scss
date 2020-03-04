@@ -1,0 +1,14 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.5;
+  font-family: OpenSans;
+}
+
+p {
+  margin: 0;
+}

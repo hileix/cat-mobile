@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PurePortal renders correctly 1`] = `
+<PurePortal
+  selector="body"
+>
+  <Portal
+    containerInfo={
+      <body>
+        content
+      </body>
+    }
+  >
+    content
+  </Portal>
+</PurePortal>
+`;

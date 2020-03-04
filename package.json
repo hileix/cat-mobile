@@ -1,0 +1,217 @@
+{
+  "name": "@hife/cat-mobile",
+  "version": "0.0.1",
+  "main": "lib/components/index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hifeteam/cat-mobile.git"
+  },
+  "scripts": {
+    "dev": "start-storybook",
+    "start": "start-storybook",
+    "css:build": "./scripts/build-css.sh",
+    "new": "./scripts/new-component.sh",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch --coverage",
+    "storybook:build": "yarn run test && yarn run build:storybook",
+    "storybook:start": "NODE_ENV=test pm2 start ./server.js --name=cat-ui-storybook",
+    "storybook:stop": "pm2 stop cat-ui-storybook",
+    "storybook:publish": "yarn && yarn run storybook:build && yarn run storybook:start",
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "lint:fix": "npm run lint -- --fix ",
+    "prettier:base": "prettier --parser typescript --single-quote --trailing-comma none",
+    "prettier:check": "npm run prettier:base -- -l \"src/**/*.{ts,tsx}\"",
+    "prettier:write": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\"",
+    "update:icon": "node ./scripts/updateIcon/index.js --inspect --code=352efheunqy",
+    "build:css": "sass --color --no-source-map src/styles:styles",
+    "build:ts": "tsc --build",
+    "update:snapshot": "jest --updateSnapshot",
+    "build": "rm -rf lib styles && npm run build:ts && npm run build:css",
+    "deploy:gitpage": "storybook-to-ghpages -o storybook",
+    "release": "npm run build && hi-pkg-scripts release && npm run deploy:gitpage"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "enquire.js": "^2.1.6",
+    "hoist-non-react-statics": "^3.3.0",
+    "keycode": "^2.2.0",
+    "lodash": "^4.17.11",
+    "memoize-one": "^5.0.2",
+    "prop-types": "^15.7.2",
+    "react-transition-group": "^4.3.0"
+  },
+  "files": [
+    "lib/**",
+    "styles/**",
+    "src/styles"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@storybook/addon-info": "^5.3.14",
+    "@storybook/addon-storysource": "^5.3.14",
+    "@storybook/addon-viewport": "^5.3.14",
+    "@storybook/react": "^5.3.14",
+    "@storybook/storybook-deployer": "^2.8.3",
+    "@types/classnames": "^2.2.9",
+    "@types/clipboard": "^2.0.1",
+    "@types/enquire.js": "^2.1.2",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/hoist-non-react-statics": "^3.3.1",
+    "@types/jest": "^24.0.24",
+    "@types/lodash": "^4.14.149",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-transition-group": "^4.2.3",
+    "@types/sinon": "^7.5.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "cz-emoji": "^1.1.2",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
+    "file-loader": "^4.2.0",
+    "fs-extra": "^8.1.0",
+    "hi-pkg-scripts": "^0.6.0",
+    "jest": "^24.9.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "sass": "^1.23.2",
+    "sass-loader": "^8.0.0",
+    "sinon": "^7.5.0",
+    "style-loader": "^1.0.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.2"
+  },
+  "config": {
+    "cz-emoji": {
+      "types": [
+        {
+          "emoji": "✨",
+          "code": "✨",
+          "description": "Introducing new features.",
+          "name": "feature"
+        },
+        {
+          "emoji": "🐛",
+          "code": "🐛",
+          "description": "Fixing a bug.",
+          "name": "fix"
+        },
+        {
+          "emoji": "💄",
+          "code": "💄",
+          "description": "Updating the UI and style files.",
+          "name": "ui"
+        },
+        {
+          "emoji": "⚡️",
+          "code": ":zap:",
+          "description": "Improving performance.",
+          "name": "perf"
+        },
+        {
+          "emoji": "📝",
+          "code": "📝",
+          "description": "Writing docs.",
+          "name": "docs"
+        },
+        {
+          "emoji": "♻️ ",
+          "code": "♻️",
+          "description": "Refactoring code.",
+          "name": "refactor"
+        },
+        {
+          "emoji": "✏️ ",
+          "code": "✏️",
+          "description": "A chore change.",
+          "name": "chore"
+        },
+        {
+          "emoji": "🔧",
+          "code": "🔧",
+          "description": "Changing configuration files.",
+          "name": "config"
+        },
+        {
+          "emoji": "⚙️ ",
+          "code": "⚙️ ",
+          "description": "Changing configuration ci.",
+          "name": "ci"
+        },
+        {
+          "emoji": "🔥",
+          "code": "🔥",
+          "description": "Removing code or files.",
+          "name": "prune"
+        },
+        {
+          "emoji": "🔖",
+          "code": "🔖",
+          "description": "Releasing / Version tags.",
+          "name": "release"
+        },
+        {
+          "emoji": "👷",
+          "code": "👷",
+          "description": "Adding CI build system.",
+          "name": "ci"
+        },
+        {
+          "emoji": "➕",
+          "code": "➕",
+          "description": "Adding a dependency.",
+          "name": "dep-add"
+        },
+        {
+          "emoji": "💩",
+          "code": "💩",
+          "description": "Writing bad code that needs to be improved.",
+          "name": "poo"
+        },
+        {
+          "emoji": "🚚",
+          "code": "🚚",
+          "description": "Moving or renaming files.",
+          "name": "mv"
+        },
+        {
+          "emoji": "🙈",
+          "entity": "🙈",
+          "code": ":see_no_evil:",
+          "description": "Adding or updating a .gitignore file",
+          "name": "see-no-evil"
+        },
+        {
+          "emoji": "⬆️",
+          "code": "⬆️",
+          "description": " Upgrading dependencies.",
+          "name": "upgrade"
+        },
+        {
+          "emoji": "✅",
+          "code": "✅",
+          "description": "Adding tests.",
+          "name": "test"
+        }
+      ]
+    },
+    "commitizen": {
+      "path": "./node_modules/cz-emoji"
+    }
+  },
+  "hi-pkg-scripts": {
+    "release": {
+      "generateChangelog": true
+    }
+  },
+  "publishConfig": {
+    "registory": "https://registry.npmjs.org/"
+  }
+}
