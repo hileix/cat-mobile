@@ -53,7 +53,7 @@ export interface ModalProps {
   /**
    * 关闭操作回调函数
    */
-  onClose?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+  onClose?: (e: React.MouseEvent<HTMLElement, MouseEvent>, isMask: boolean) => void;
   /**
    * 关闭时是否销毁子元素
    */
@@ -124,12 +124,12 @@ class Modal extends PureComponent<ModalProps, ModalState> {
 
   handleMaskClose = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     const { mask } = this.props;
-    mask && this.handleClose(e);
+    mask && this.handleClose(e, true);
   };
 
-  handleClose = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  handleClose = (e: React.MouseEvent<HTMLElement, MouseEvent>, isMask = false) => {
     const { onClose } = this.props;
-    onClose && onClose(e);
+    onClose && onClose(e,isMask );
   };
 
   handleOk = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -176,7 +176,7 @@ class Modal extends PureComponent<ModalProps, ModalState> {
       okText,
       cancelText,
       platform,
-      onClose
+      onOk
     } = this.props;
     const footerPrefix = `${prefix}-modal__footer`;
 
@@ -189,13 +189,14 @@ class Modal extends PureComponent<ModalProps, ModalState> {
           <button
             type='button'
             className={`${footerPrefix}-cancel-button ${footerPrefix}-cancel-button--${platform}`}
-            onClick={onClose}
+            onClick={this.handleClose}
           >
             {cancelText}
           </button>
           <button
             type='button'
             className={`${footerPrefix}-ok-button ${footerPrefix}-ok-button--${platform}`}
+            onClick={onOk}
           >
             {okText}
           </button>

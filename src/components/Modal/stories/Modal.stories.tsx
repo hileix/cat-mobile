@@ -28,6 +28,7 @@ const BaseModal = () => {
         title='title'
         visible={visible1}
         onClose={() => setVisible1(false)}
+        onOk={() => console.log('ok')}
       >
         <p>content</p>
         <p>content</p>
@@ -38,6 +39,7 @@ const BaseModal = () => {
         visible={visible2}
         onClose={() => setVisible2(false)}
         platform='android'
+        onOk={() => console.log('ok')}
       >
         <p>content</p>
         <p>content</p>
