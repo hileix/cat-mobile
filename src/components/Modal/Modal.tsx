@@ -53,7 +53,10 @@ export interface ModalProps {
   /**
    * 关闭操作回调函数
    */
-  onClose?: (e: React.MouseEvent<HTMLElement, MouseEvent>, isMask: boolean) => void;
+  onClose?: (
+    e: React.MouseEvent<HTMLElement, MouseEvent>,
+    isMask: boolean
+  ) => void;
   /**
    * 关闭时是否销毁子元素
    */
@@ -127,9 +130,12 @@ class Modal extends PureComponent<ModalProps, ModalState> {
     mask && this.handleClose(e, true);
   };
 
-  handleClose = (e: React.MouseEvent<HTMLElement, MouseEvent>, isMask = false) => {
+  handleClose = (
+    e: React.MouseEvent<HTMLElement, MouseEvent>,
+    isMask = false
+  ) => {
     const { onClose } = this.props;
-    onClose && onClose(e,isMask );
+    onClose && onClose(e, isMask);
   };
 
   handleOk = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -170,14 +176,7 @@ class Modal extends PureComponent<ModalProps, ModalState> {
   };
 
   renderFooter = () => {
-    const {
-      prefix,
-      footer,
-      okText,
-      cancelText,
-      platform,
-      onOk
-    } = this.props;
+    const { prefix, footer, okText, cancelText, platform, onOk } = this.props;
     const footerPrefix = `${prefix}-modal__footer`;
 
     let newFooter;
@@ -217,7 +216,8 @@ class Modal extends PureComponent<ModalProps, ModalState> {
       visible,
       destroyOnClose,
       width,
-      mask
+      mask,
+      platform
     } = this.props;
     const { isOverflow } = this.state;
 
@@ -234,7 +234,16 @@ class Modal extends PureComponent<ModalProps, ModalState> {
       moreStyle.margin = '60px 0';
     }
 
-    const modalStyle: React.CSSProperties = { width, ...style, ...moreStyle };
+    let newWidth = width;
+    if (platform === 'android') {
+      newWidth = 292;
+    }
+
+    const modalStyle: React.CSSProperties = {
+      width: newWidth,
+      ...style,
+      ...moreStyle
+    };
 
     return (
       <PurePortal selector='body'>

@@ -186,27 +186,29 @@
     line-height: 24px;
     font-weight: 600;
     color: #030303;
-    margin: 20px 15px 0;
     &--ios {
       text-align: center;
+      margin: 20px 15px 0;
     }
     &--android {
       text-align: left;
+      margin: 20px 24px 0;
     }
   }
 
   &__body {
     font-size: 16px;
-    margin: 8px 15px 20px;
     font-size: 12px;
     line-height: 1.23;
     letter-spacing: -0.08px;
     color: #8d8d91;
     &--ios {
       text-align: center;
+      margin: 8px 15px 20px;
     }
     &--android {
       text-align: left;
+      margin: 8px 24px 20px;
     }
   }
 
