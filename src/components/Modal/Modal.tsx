@@ -69,6 +69,10 @@ export interface ModalProps {
    * 平台（平台不同，样式不同）
    */
   platform: Platform;
+  /**
+   * body 行内样式
+   */
+  bodyStyle?: React.CSSProperties;
 }
 
 export type Platform = 'ios' | 'android';
@@ -166,10 +170,13 @@ class Modal extends PureComponent<ModalProps, ModalState> {
   };
 
   renderBody = () => {
-    const { prefix, children, platform } = this.props;
+    const { prefix, children, platform, bodyStyle } = this.props;
     const modalPrefix = `${prefix}-modal`;
     return (
-      <div className={`${modalPrefix}__body ${modalPrefix}__body--${platform}`}>
+      <div
+        className={`${modalPrefix}__body ${modalPrefix}__body--${platform}`}
+        style={bodyStyle}
+      >
         {children}
       </div>
     );
