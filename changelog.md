@@ -1,3 +1,6 @@
+## Release v1.0.2
+- 🐛 (font-family) 修复 font-family 错误的 bug
+
 ## Release v1.0.0
 - 🐛 (Modal) 修复 Modal 组件 Header 样式 bug
 
