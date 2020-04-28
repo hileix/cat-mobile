@@ -1,3 +1,6 @@
+## Release v1.1.0
+- ✨ (Modal) Modal 组件添加 bodyStyle 属性
+
 ## Release v1.0.2
 - 🐛 (font-family) 修复 font-family 错误的 bug
 
